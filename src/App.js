@@ -1,5 +1,7 @@
 import React from 'react';
 import Main from './Main'; 
+import Form from './logInForm'; 
+
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { Typography, Button } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
@@ -9,8 +11,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import Link from '@material-ui/core/Link';
+import LinkUI from '@material-ui/core/Link';
+import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom"
 import './App.css';
+import styled from 'styled-components'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -61,12 +65,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const SearchBar = styled.div`
+  padding: 1em  
+`
+
 
 function App() {
   const classes = useStyles();
 
   return (
-    <div>
+    <Router>
+        <div>
         <AppBar color="primary" position="static">
           <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
@@ -79,6 +88,7 @@ function App() {
             </Typography>
             </Grid>
           </Grid>
+          <SearchBar>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -91,14 +101,20 @@ function App() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          </div>
-          <Link href="#" color="inherit">
-            <Button color="inherit">Login</Button>
-          </Link>
+          </div>  
+          </SearchBar>
+            <Form/> 
           </Toolbar>
         </AppBar>
+
+        <Switch>
+          <Route path="/logIn">
+              <Form/>
+          </Route>
+        </Switch>
         <Main/>
     </div>
+    </Router>
   );
 }
 
