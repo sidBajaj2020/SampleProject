@@ -12,6 +12,7 @@ import TagFace from '@material-ui/icons/TagFaces';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import {Link} from "react-router-dom"
 
 const useStyles = makeStyles({
   list: {
@@ -23,6 +24,7 @@ const useStyles = makeStyles({
 });
 
 export default function TemporaryDrawer() {
+
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -40,6 +42,8 @@ export default function TemporaryDrawer() {
     setState({ ...state, [side]: open });
   };
 
+  const URLS = ["/singlePlayDate", "/groupPlayDate", "/supervisors", "/settings"]
+
   const sideList = side => (
     <div
       className={classes.list}
@@ -48,8 +52,8 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        {['Group Play Date', 'Single Play Date', 'Play Date Supervising Services', 'Last Minute Ideas'].map((text, index) => (
-          <ListItem button key={text}>
+        {['Single Play Date', 'Group Play Date', 'Play Date Supervising Services', 'Last Minute Ideas'].map((text, index) => (
+          <ListItem component={Link} to={URLS[index]} button key={text}>
             <ListItemIcon>{(index == 0 || index == 1) ? <TagFace /> : <EmojiPeopleIcon />} </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>

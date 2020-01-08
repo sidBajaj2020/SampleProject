@@ -107,11 +107,23 @@ function App() {
         </AppBar>
 
         <Switch>
-          <Route path="/logIn">
-              <Form/>
+          <Route path="/singlePlayDate">
+              <h1>Single Play Date</h1>
+          </Route>
+          <Route path="/groupPlayDate">
+              <h1>Group Play Date</h1>
+          </Route>
+          <Route path="/supervisors">
+              <h1>Supervisors Available</h1>
+          </Route>
+          <Route path = "/settings">
+               <h1>Settings Available</h1>
+          </Route>
+          <Route path = "">
+              <Main />
           </Route>
         </Switch>
-        <Main/>
+        
     </div>
     </Router>
   );
