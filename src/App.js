@@ -1,6 +1,7 @@
 import React from 'react';
 import Main from './Main'; 
 import Form from './logInForm'; 
+import SideBar from './Sidebar'
 
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { Typography, Button } from '@material-ui/core';
@@ -78,13 +79,11 @@ function App() {
         <div>
         <AppBar color="primary" position="static">
           <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
+          <SideBar />
           <Grid container direction="row" justify="center">
             <Grid item>
             <Typography variant="h6" className={classes.title}>
-              <i>Play Date</i>
+              <i>Play Day</i>
             </Typography>
             </Grid>
           </Grid>

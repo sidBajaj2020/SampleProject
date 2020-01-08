@@ -10,6 +10,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components'
 
 const useStyles = makeStyles(theme => ({
@@ -43,7 +44,11 @@ export default function FormDialog() {
           Login
         </Button>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+           <Grid container spacing={0} direction="row" justify="centre" alignItems="centre">
+                <Grid item xs={6}>
+                     <DialogTitle id="form-dialog-title"> <em> Log in </em></DialogTitle>
+                </Grid>
+            </Grid> 
           <DialogContent>
             <TextField
               autoFocus
