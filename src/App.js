@@ -2,6 +2,7 @@ import React from 'react';
 import Main from './Main'; 
 import Form from './logInForm'; 
 import SideBar from './Sidebar'
+import Title from './title'; 
 
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { Typography, Button } from '@material-ui/core';
@@ -83,7 +84,7 @@ function App() {
           <Grid container direction="row" justify="center">
             <Grid item>
             <Typography variant="h6" className={classes.title}>
-              <i>Play Day</i>
+              <i component={Link} to="/">Play Day</i>
             </Typography>
             </Grid>
           </Grid>
@@ -108,16 +109,16 @@ function App() {
 
         <Switch>
           <Route path="/singlePlayDate">
-              <h1>Single Play Date</h1>
+              <Title text="Single Play Date"/>
           </Route>
           <Route path="/groupPlayDate">
-              <h1>Group Play Date</h1>
+              <Title text="Group Play Date"/>
           </Route>
           <Route path="/supervisors">
-              <h1>Supervisors Available</h1>
+              <Title text="Supervisors Available"/>
           </Route>
           <Route path = "/settings">
-               <h1>Settings Available</h1>
+               <Title text="Settings Available"/>
           </Route>
           <Route path = "">
               <Main />
