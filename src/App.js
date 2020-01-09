@@ -73,13 +73,27 @@ const SearchBar = styled.div`
   padding: 2em  
 `
 
+const Greeting = styled.p`
+  padding: 1em
+`
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+
+    color: white; 
+
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+`
+
 function App(props) {
   const classes = useStyles();
 
   console.log("Hello World")
   console.log(props)
 
-const loggedIn = !props.loggedIn ? <Form /> : <div>Hey {props.userName} !</div>
+  const loggedIn = !props.loggedIn ? <Form /> : <Greeting>Hey {props.userName}</Greeting>
 
   return (
     <Router>
@@ -89,8 +103,8 @@ const loggedIn = !props.loggedIn ? <Form /> : <div>Hey {props.userName} !</div>
           <SideBar />
           <Grid container direction="row" justify="center">
             <Grid item>
-            <Typography variant="h6" className={classes.title}>
-              <i component={Link} to="/">Play Day</i>
+            <Typography component={StyledLink} to="/" variant="h6" className={classes.title}>
+              <i>Play Day</i>
             </Typography>
             </Grid>
           </Grid>
@@ -110,6 +124,7 @@ const loggedIn = !props.loggedIn ? <Form /> : <div>Hey {props.userName} !</div>
           </div>  
           </SearchBar>
             {loggedIn}
+            {props.loggedIn ? <Button onClick={props.logOutUser} color="inherit">Logout</Button> : null}
           </Toolbar>
         </AppBar>
 
@@ -140,5 +155,11 @@ const mapStateToProps = state => {
   return state; 
 }
 
-const connectedApp = connect(mapStateToProps) (App); 
+const mapDispatchToProps = dispatch => {
+  return {
+    logOutUser: () => dispatch({type: "LOGOUT_USER"})
+  }
+}
+
+const connectedApp = connect(mapStateToProps, mapDispatchToProps) (App); 
 export default connectedApp;
