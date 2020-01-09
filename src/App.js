@@ -18,6 +18,8 @@ import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom"
 import './App.css';
 import styled from 'styled-components'
 
+import { connect } from "react-redux";
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -68,12 +70,16 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SearchBar = styled.div`
-  padding: 1em  
+  padding: 2em  
 `
 
-
-function App() {
+function App(props) {
   const classes = useStyles();
+
+  console.log("Hello World")
+  console.log(props)
+
+const loggedIn = !props.loggedIn ? <Form /> : <div>Hey {props.userName} !</div>
 
   return (
     <Router>
@@ -103,7 +109,7 @@ function App() {
             />
           </div>  
           </SearchBar>
-            <Form/> 
+            {loggedIn}
           </Toolbar>
         </AppBar>
 
@@ -130,4 +136,9 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return state; 
+}
+
+const connectedApp = connect(mapStateToProps) (App); 
+export default connectedApp;
