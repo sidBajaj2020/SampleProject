@@ -132,10 +132,11 @@ function App(props) {
         <Switch>
           <Route path="/singlePlayDate">
               <Title text="Single Play Date"/>
-              <SubSection />
+              <SubSection text="singlePlayDateProfiles" />
           </Route>
           <Route path="/groupPlayDate">
               <Title text="Group Play Date"/>
+              <SubSection text="groupPlayDateProfiles" />
           </Route>
           <Route path="/supervisors">
               <Title text="Supervisors Available"/>

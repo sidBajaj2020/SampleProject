@@ -23,11 +23,13 @@ export default function MediaCard(props) {
   return (
     <Card className={classes.card}>
       <CardActionArea>
+
         <CardMedia
           className={classes.media}
           image={props.url}
           title={props.title}
         />
+
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {props.name}
@@ -36,14 +38,18 @@ export default function MediaCard(props) {
                 <b>Hobbies: </b> {props.hobbies}
           </Typography>
         </CardContent>
+
       </CardActionArea>
       <CardActions>
+          
         <Button size="small" color="primary">
             Contact
         </Button>
+
         <Button size="small" color="primary">
           Learn More 
         </Button>
+
       </CardActions>
     </Card>
   );
