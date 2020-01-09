@@ -140,6 +140,7 @@ function App(props) {
           </Route>
           <Route path="/supervisors">
               <Title text="Supervisors Available"/>
+              <SubSection text="supervisorsAvailable" />
           </Route>
           <Route path = "/settings">
                <Title text="Settings Available"/>

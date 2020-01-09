@@ -64,6 +64,23 @@ const initialState = {
             name: "Power Rangers", 
             hobbies: "Fighting Evil"
         }
+    ], 
+    supervisorsAvailable: [
+        {
+            url: "https://upload.wikimedia.org/wikipedia/en/2/21/Web_of_Spider-Man_Vol_1_129-1.png", 
+            name: "Spider Man", 
+            hobbies: "Photography"
+        }, 
+        {
+            url: "https://upload.wikimedia.org/wikipedia/en/2/21/Web_of_Spider-Man_Vol_1_129-1.png", 
+            name: "Spider Man", 
+            hobbies: "Rock Climbing"
+        }, 
+        {
+            url: "https://upload.wikimedia.org/wikipedia/en/2/21/Web_of_Spider-Man_Vol_1_129-1.png", 
+            name: "Spider Man", 
+            hobbies: "Role Playing"
+        }
     ]
 }; 
 
