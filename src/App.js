@@ -3,6 +3,7 @@ import Main from './Main';
 import Form from './logInForm'; 
 import SideBar from './Sidebar'
 import Title from './title'; 
+import SubSection from './subSectionsMain'
 
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { Typography, Button } from '@material-ui/core';
@@ -131,6 +132,7 @@ function App(props) {
         <Switch>
           <Route path="/singlePlayDate">
               <Title text="Single Play Date"/>
+              <SubSection />
           </Route>
           <Route path="/groupPlayDate">
               <Title text="Group Play Date"/>

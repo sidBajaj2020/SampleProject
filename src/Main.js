@@ -18,7 +18,7 @@ const Header2 = styled.h1`
 export default function Main(){
     return (
         <Grid container>
-            <Grid item xs="8">
+            <Grid item spacing={2} xs="8">
                 <Header1>Life is Short.</Header1>
                 <Header2>Arrange a Play Date.</Header2>
             </Grid>
