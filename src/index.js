@@ -5,14 +5,19 @@ import App from './App';
 
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware  }  from 'redux'
+
+import createSagaMiddleware from 'redux-saga'
 import rootReducer from './reducer'
 
 import thunk from 'redux-thunk';
-
+import sagaWatch from './sagas'
 
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const sagaMiddleware = createSagaMiddleware()
+const store = createStore(rootReducer, applyMiddleware(thunk, sagaMiddleware))
+
+sagaMiddleware.run(sagaWatch)
 
 console.log(store.getState())
 

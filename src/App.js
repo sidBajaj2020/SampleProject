@@ -158,7 +158,10 @@ function App(props) {
                <Title text="Settings Available"/>
                <Div>
                 <Quote>{props.kanyeQuote}</Quote>
-                <Button onClick={props.genQuote}> Generate New Kanye West Quote </Button>
+               </Div>
+               <Div>
+                  <Button onClick={props.genQuote}> Generate New Kanye West Quote using Saga </Button>
+                  <Button onClick={props.genQuoteThunk}> Generate New Kanye West Quote using Thunk </Button>
                </Div>
           </Route>
           <Route path = "">
@@ -196,7 +199,8 @@ function quoteActionCreator(){
 const mapDispatchToProps = dispatch => {
   return {
     logOutUser: () => dispatch({type: "LOGOUT_USER"}), 
-    genQuote: () => dispatch(quoteActionCreator())
+    genQuote: () => dispatch({type: "GEN_NEW_QUOTE"}), 
+    genQuoteThunk: () => dispatch(quoteActionCreator())
   }
 }
 
