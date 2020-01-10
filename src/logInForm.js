@@ -17,64 +17,36 @@ import {Link} from "react-router-dom"
 
 import { connect } from "react-redux";
 
-const useStyles = makeStyles(theme => ({
-    modal: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    paper: {
-      backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
-    },
-}));
 
-class FormDialog extends React.Component {
+  function FormDialog2(props) {
 
-    constructor(props){
-      super(props); 
-      this.state = {open: false, username: undefined}; 
-      console.log("Hello World- Form")
-      console.log(this.props)
-
-      this.setOpen = this.setOpen.bind(this); 
-      this.handleClickOpen = this.handleClickOpen.bind(this); 
-      this.handleClose = this.handleClose.bind(this); 
-      this.handleChange = this.onChange.bind(this); 
-      this.handleLogIn = this.handleLogIn.bind(this); 
-    }
-
-    setOpen(b){
-      this.setState({open: b})
-    }
+    const [open, setOpen] = React.useState(false); 
+    const [username, setUsername] = React.useState("placeholder"); 
   
-    handleClickOpen(){
-      this.setOpen(true);
+    function handleClickOpen(){
+      setOpen(true);
     };
   
-    handleClose(){
-      this.setOpen(false);
+    function handleClose(){
+      setOpen(false);
     };
 
-    handleLogIn(){
-      this.setOpen(false);
-      this.props.logInUser(this.state.username)
+    function handleLogIn(){
+      setOpen(false);
+      props.logInUser(username)
     };
 
-    onChange(event){
+    function onChange(event){
       const { target: { name, value } } = event;
-      this.setState({username: value})
+      setUsername(value)
     }
 
-    render(){
       return (
         <div>
-          <Button variant="outlined" color="inherit" onClick={this.handleClickOpen}>
+          <Button variant="outlined" color="inherit" onClick={handleClickOpen}>
             Login
           </Button>
-          <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
+          <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
              <Grid container spacing={0} direction="row" justify="centre" alignItems="centre">
                   <Grid item xs={6}>
                        <DialogTitle id="form-dialog-title"> <em> Log in </em></DialogTitle>
@@ -88,7 +60,7 @@ class FormDialog extends React.Component {
                 label="Username"
                 type="email"
                 fullWidth
-                onChange={this.handleChange}
+                onChange={onChange}
               />
               <TextField
                 autoFocus
@@ -100,17 +72,16 @@ class FormDialog extends React.Component {
               />
             </DialogContent>
             <DialogActions>
-              <Button onClick={this.handleClose} color="primary">
+              <Button onClick={handleClose} color="primary">
                 Cancel
               </Button>
-              <Button component={Link} to="/" onClick={this.handleLogIn} color="primary">
+              <Button component={Link} to="/" onClick={handleLogIn} color="primary">
                 Log In
               </Button>
             </DialogActions>
           </Dialog>
         </div>
       );
-    }
   }
 
   const mapDispatchToProps = dispatch => {
@@ -119,5 +90,5 @@ class FormDialog extends React.Component {
     }
   }
   
-  const connectedModal = connect(null, mapDispatchToProps) (FormDialog); 
-  export default connectedModal; 
+  const connectedForm = connect(null, mapDispatchToProps) (FormDialog2); 
+  export default connectedForm; 
