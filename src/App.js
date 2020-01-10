@@ -19,7 +19,10 @@ import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom"
 import './App.css';
 import styled from 'styled-components'
 
+import ReduxThunk from 'redux-thunk'
 import { connect } from "react-redux";
+
+const axios = require('axios');
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -88,6 +91,15 @@ const StyledLink = styled(Link)`
     }
 `
 
+const Div = styled.div`
+  text-align:center
+`
+
+const Quote = styled.h1`
+    padding-top: 4em
+    display:inline-block
+`
+
 function App(props) {
   const classes = useStyles();
 
@@ -144,6 +156,10 @@ function App(props) {
           </Route>
           <Route path = "/settings">
                <Title text="Settings Available"/>
+               <Div>
+                <Quote>{props.kanyeQuote}</Quote>
+                <Button onClick={props.genQuote}> Generate New Kanye West Quote </Button>
+               </Div>
           </Route>
           <Route path = "">
               <Main />
@@ -159,9 +175,28 @@ const mapStateToProps = state => {
   return state; 
 }
 
+function quoteActionCreator(){
+
+  return function (dispatch) {
+
+    var quote = "ACTION DISPATCHED"
+    axios.get("https://api.kanye.rest")
+    .then(function(res){
+      console.log("RESPONSE")
+      quote = res.data.quote
+
+      dispatch({
+        type: "GENERATE_NEW_QUOTE", 
+        quote
+      })
+    })
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
-    logOutUser: () => dispatch({type: "LOGOUT_USER"})
+    logOutUser: () => dispatch({type: "LOGOUT_USER"}), 
+    genQuote: () => dispatch(quoteActionCreator())
   }
 }
 

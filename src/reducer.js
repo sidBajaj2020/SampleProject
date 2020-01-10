@@ -1,6 +1,7 @@
 const initialState = {
     loggedIn: false, 
     userName: undefined,
+    kanyeQuote: "Short ribs beef turducken, pork chop tri-tip capicola pork belly meatloaf chicken ", 
     singlePlayDateProfiles: [
         {
             url: "https://pbs.twimg.com/profile_images/288477152/Bart_Simpson_400x400.png",
@@ -89,6 +90,8 @@ export default function (state = initialState, action){
         return {...state, loggedIn: true, userName:action.userName}
     } else if (action.type === 'LOGOUT_USER'){
         return {...state, loggedIn: false, userName: undefined}
+    } else if (action.type === 'GENERATE_NEW_QUOTE'){
+        return {...state, kanyeQuote: action.quote}
     }
     return state; 
 }
